@@ -3,8 +3,8 @@ add_library(
   coredumper
   coredumper.c
   thread_lister.c
-  elfcore.c
-  linuxthreads.c
+  elfcore.cc
+  linuxthreads.cc
   )
 
 target_include_directories(
@@ -25,6 +25,7 @@ check_c_compiler_flag("-fno-strict-aliasing" FLAG_NO_STRICT_ALIASING)
 if(FLAG_NO_STRICT_ALIASING)
   target_compile_options(coredumper PUBLIC "-fno-strict-aliasing")
 endif()
+#target_compile_options(libcoredumper PUBLIC "-Wall;-Wextra;-Werror")
 
 export(TARGETS coredumper FILE "coredumper.cmake")
 install(
